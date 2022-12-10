@@ -1,0 +1,36 @@
+**********************************NAMESPACE************************************
+
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: mynamesp
+  
+************************************END***************************************  
+
+
+
+##kubectl get namespace
+##kubectl get pods -n name_space
+##kubectl delete pods -n name_space
+##kubectl apply -f podname -n name_space
+
+##to change default namespace
+< kubectl config set-context $(kubectl config current-context) --namespace=devvvv > 
+
+
+*************************************SET RESOURCE FOT NAMESPACE*****************************
+
+kind: ResourceQuota
+apiVersion: v1
+metadata:
+  name: rq
+spec:
+  hard:
+    limits.cpu: 400m
+    limits.memory: 300Mi
+    requests.cpu:  200m
+    requests.memory: 200Mi
+
+*************************************END****************************************************
+
+##apply on namespce
