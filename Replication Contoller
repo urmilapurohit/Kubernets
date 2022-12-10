@@ -16,3 +16,10 @@ spec:
         - name: cnt1
           image: ubuntu
           command: ["/bin/bash", "-c", "sleep 100"]
+
+
+
+
+## kubectl get rc
+## kubectl describe rc rc_name
+## kubectl scale --replicas=3 rc -l name=testrc
