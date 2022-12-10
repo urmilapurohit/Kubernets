@@ -1,0 +1,46 @@
+##create anyfile that you wants to be configMap Ex: 'impdata.txt'
+## now make it configmap file EX
+    < kubectl create configmap  <nme-bridge>  --from-file=impdata.txt >
+
+*******************************BY VOLUME*********************************
+kind: Pod
+apiVersion: v1
+metadata:
+  name: conf
+spec:
+  containers:
+    - name: cnt1
+      image: ubuntu
+      command: ["/bin/bash", "-c", "sleep 1000000"]
+      volumeMounts:
+        - name: confhere
+          mountPath: /tmp/comeon
+  volumes:
+    - name: confhere
+      configMap:
+        name: nme-bridge
+        items:
+          - key: impdata.txt
+            path: impdata.txt
+            
+***********************************END************************************
+
+***********************************BY ENV VARIABEL*************************
+kind: Pod
+apiVersion: v1
+metadata:
+  name: conf
+spec:
+  containers:
+    - name: cnt1
+      image: ubuntu
+      command: ["/bin/bash", "-c", "sleep 1000000000000000000000"]
+      env:
+        - name: MYSEC
+          valueFrom:
+            configMapKeyRef:
+              name: nme-bridge
+              key: impdata.txt
+              
+              
+              
