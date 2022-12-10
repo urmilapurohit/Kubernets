@@ -1,0 +1,16 @@
+kind: Job
+apiVersion: batch/v1
+metadata:
+  name: jobpll
+spec:
+  parallelism: 4
+  activeDeadlineSeconds: 10
+  template:
+    metadata:
+      name: tempo1
+    spec:
+      containers:
+        - name: cnt1
+          image: ubuntu
+          command: ["/bin/bash", "-c", "sleep 10"]
+      restartPolicy: Never
