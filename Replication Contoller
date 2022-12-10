@@ -5,12 +5,12 @@ metadata:
 spec:
   replicas: 1
   selector:
-      name: testrc
+      name: testrc                    ##same
   template:
     metadata:
       name: temp2
       labels:
-        name: testrc
+        name: testrc                  ##same
     spec:
       containers:
         - name: cnt1
