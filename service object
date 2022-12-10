@@ -1,0 +1,50 @@
+**********************************FILE 1***********************************************************
+
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: pod1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: cip
+  template:
+    metadata:
+      name: temp2
+      labels:
+         name: cip
+    spec:
+      containers:
+        - name: cnt1
+          image: httpd
+          ports:
+            - containerPort: 80
+
+**********************************************END****************************************************
+
+
+************************************SERVICE OBJECT FILE********************************************
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: scv
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+  selector:
+    name: cip
+  type: ClusterIP                          ## ClusterPort/NodePort
+  
+ 
+***********************************END*******************************************************
+  
+## kubectl get svc
+## kubectl describe svc pod_name
+## curl VIRTUAL_IP:80        #for ClusterIP
+## paste PUBLICE DNS of AWSE2 Add portno ':80'            #for NodePort
+
+
+  
