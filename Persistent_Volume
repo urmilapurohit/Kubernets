@@ -1,0 +1,70 @@
+***********************************PV file***************************************
+
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: mypv
+spec:
+  capacity:
+    storage: 1G
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  awsElasticBlockStore:
+    volumeID: vol-0537868d6906bc13e
+    fsType: ext4
+    
+***********************************END***********************************    
+
+*********************************PVC file*********************************
+
+
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1G
+
+*****************************END********************************
+
+
+*******************************FINAL file*****************************
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: testpod1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: testpv
+  template:
+    metadata:
+      name: temp2
+      labels:
+        name: testpv
+    spec:
+      containers:
+        - name: cnt1
+          image: ubuntu
+          command: ["/bin/bash", "-c", "sleep 100"]
+          volumeMounts:
+            - name: mivi
+              mountPath: /tmp/data
+      volumes:
+        - name: mivi
+          persistentVolumeClaim:
+            claimName: pvc
+          
+                                                                                                                                    1,1           Top
+
+
+
+
+
+
