@@ -1,0 +1,16 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: pod1
+spec:
+  containers:
+     - name: cnt1
+       image: ubuntu
+       command: ["/bin/bash", "-c", "while true; do echo HELLO; sleep 3; done"]
+       volumeMounts:
+         - name: myvol2
+           mountPath: /volhere1
+  volumes:
+    - name: myvol2
+      hostPath:
+        path: /tmp/data                 #try by already creating '/data' folder in kubernetes machine
