@@ -1,0 +1,23 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: pod1
+spec:
+  containers:
+    - name: cnt1
+      image: ubuntu
+      command: ["/bin/bash", "-c", "sleep 1000000"]
+    - name: cnt2
+      image: ubuntu
+      command: ["/bin/bash", "-c", "sleep 1000000"]
+      ports:
+       - containerPort: 80
+       
+       
+       
+       
+       
+       
+##  go inside both container  
+## (1) apt update & install curl  
+## (2) curl localhost:80      
