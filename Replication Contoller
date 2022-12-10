@@ -1,0 +1,18 @@
+kind: ReplicationController
+apiVersion: apps/v1                  ## for RC, RS and Deployment 'apiVersion' will be 'apps/v1'
+metadata:
+  name: testpod1
+spec:
+  replicas: 1
+  selector:
+      name: testrc
+  template:
+    metadata:
+      name: temp2
+      labels:
+        name: testrc
+    spec:
+      containers:
+        - name: cnt1
+          image: ubuntu
+          command: ["/bin/bash", "-c", "sleep 100"]
