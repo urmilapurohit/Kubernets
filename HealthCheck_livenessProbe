@@ -1,0 +1,21 @@
+kind: Pod
+apiVersion: v1
+metadata:
+   name: livepod
+spec:
+  containers:
+    - name: cnt1
+      image: ubuntu
+      command: ["/bin/bash", "-c", "sleep 100"]
+      args:
+      - /bin/bash
+      - -c
+      -  touch /tmp/health; sleep 100                          ## any random file to be create while cnt creation time
+      livenessProbe:
+        exec:
+          command:
+            - cat
+            - /tmp/health                                     ## file to be check
+        initialDelaySeconds: 10
+        periodSeconds: 5
+        timeoutSeconds: 30
