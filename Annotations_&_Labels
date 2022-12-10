@@ -14,3 +14,11 @@ spec:
     - name: test1
       image: ubuntu
       command: ["/bin/bash", "-c", "sleep 1000000"]
+      
+      
+## kubectl get pods --show-labels 
+## kubectl get pods -l name=user1
+## kubectl get pods -l name!=user1
+## kubectl get pods -l 'name in(user1, uru, jiya)'
+## kubectl get pods -l 'name notin(user1, uru, jiya)'
+## kubectl delete pods -l name=user1
