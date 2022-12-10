@@ -1,0 +1,27 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: testpod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: testdeployment
+  template:
+    metadata:
+      name: temp2
+      labels:
+        name: testdeployment
+    spec:
+      containers:
+        - name: cnt1
+          image: ubuntu
+          command: ["/bin/bash", "-c", "sleep 100"]
+          
+          
+          
+          
+          
+## kubectl get deploy
+## kubectl describe deploy pod_name
+## kubectl scale --replicas=3 deploy pod_name            #testpod          
