@@ -22,5 +22,5 @@ spec:
 
 
 ## kubectl get rs
-## kubectl describe rs rs_name
+## kubectl describe rs pod_name
 ## kubectl scale --replicas=3 rs pod_name                      #testpod
