@@ -1,0 +1,26 @@
+kind: ReplicaSet
+apiVersion: apps/v1                        ## for RC, RS and Deployment 'apiVersion' will be 'apps/v1'
+metadata:
+  name: testpod
+spec:
+  replicas: 1
+  selector:
+   matchExpressions:
+     - {key: name, operator: In, values: [uru, soaktestrs, soaktest]}
+  template:
+    metadata:
+      name: temp2
+      labels:
+        name: uru
+    spec:
+      containers:
+        - name: cnt1
+          image: ubuntu
+          command: ["/bin/bash", "-c", "sleep 100"]
+
+
+
+
+## kubectl get rs
+## kubectl describe rs rs_name
+## kubectl scale --replicas=3 rs pod_name                      #testpod
