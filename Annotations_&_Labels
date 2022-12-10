@@ -1,0 +1,16 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: podannotationsandlabels
+  annotations:
+    description: HELLO THIS IS TESTING FOR ANNOTATAION
+  labels:
+    name: user1
+    subject: devOps
+    class: test
+
+spec:
+  containers:
+    - name: test1
+      image: ubuntu
+      command: ["/bin/bash", "-c", "sleep 1000000"]
