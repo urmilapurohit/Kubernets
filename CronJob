@@ -1,0 +1,19 @@
+kind: CronJob
+apiVersion: batch/v1beta1
+metadata:
+  name: jobcrontest
+spec:                                                         #######################spec1
+  schedule: " * * * * * "
+  jobTemplate:
+    spec:                                                     #######################spec2
+      template:
+        spec:                                                 #######################spec3
+          containers:
+            - name: cnt1
+              image: ubuntu
+              command: ["/bin/bash", "-c", "sleep 10"]
+          restartPolicy: Never
+
+
+#### THIS FILE NOT WORKING 'KIND' IS NOT APPROPIAT ##################
+~                                                                            
