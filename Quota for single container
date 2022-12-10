@@ -1,0 +1,16 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: inquota
+spec:
+  containers:
+    - name: cc1
+      image: httpd
+      command: ["/bin/bash", "-c", "sleep 1000"]
+      resources:
+        limits:
+          cpu: 400m
+          memory: 300Mi
+        requests:
+          cpu: 300m
+          memory:  100Mi
